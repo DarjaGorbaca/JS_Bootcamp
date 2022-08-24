@@ -16,7 +16,6 @@ $entry = [];
 if ($con->connect_error) {
     $err = $con->connect_error;
 }
-
 $sql = "SELECT * FROM Customers";
 if ($result = mysqli_query($con, $sql)) {
     if (mysqli_num_rows($result) > 0) {
@@ -28,6 +27,7 @@ if ($result = mysqli_query($con, $sql)) {
         echo "<th>Last name</th>";
         echo "<th>Email</th>";
         echo "<th>Phone</th>";
+        echo "<th>Action</th>";
         echo "</thead>";
         echo "</tr>";
         while ($customer = mysqli_fetch_array($result)) {
@@ -37,6 +37,9 @@ if ($result = mysqli_query($con, $sql)) {
             echo "<td>" . $customer['lastname'] . "</td>";
             echo "<td>" . $customer['email'] . "</td>";
             echo "<td>" . $customer['phone'] . "</td>";
+            echo "<td>" . "<a href='edit.php?id=<?php echo $customer['id'] ?>'
+            class='link-dark'><i class='fa-solid fa-pen-to-square'></i></a>";
+            echo "<td>" . "<a href='delete.php?id=<?php echo $customer['id'] ?>' class='link-dark'><i class='fa-solid fa-trash fs-5'></i></a>" . "</td>";
             echo "</tr>";
         }
         echo "</table>";

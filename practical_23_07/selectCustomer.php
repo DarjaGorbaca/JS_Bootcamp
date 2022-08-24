@@ -28,7 +28,6 @@ if ($con->connect_error) {
         }
     }
 }
-var_dump($_GET);
 ?>
 
 <html>
@@ -52,7 +51,6 @@ include("header.php");
 <body>
     <div class="container">
         <?php if ($err == "") { ?>
-            <?php var_dump($entry); ?>
             <h3>First name: <?php echo $entry["firstname"] ?></h3><br>
             <h3>Last name: <?php echo $entry["lastname"] ?></h3><br>
             <h3>Email: <?php echo $entry["email"] ?></h3><br>
